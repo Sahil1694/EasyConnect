@@ -2,6 +2,7 @@ package com.Smart_Contact_Manager.Smart_Contact_Manager.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,5 +26,21 @@ public class PageController {
     @RequestMapping(value = "/services", method = RequestMethod.GET)
     public String servicesPage() {
         return "services";
+    }
+
+    //Contact Page
+    @GetMapping("/contact")
+    public String contactpage(){
+        return "contact";
+    }
+    //Login
+    @GetMapping("/login")
+    public String Loginpage(){
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String registerpage(){
+        return "register";
     }
 }

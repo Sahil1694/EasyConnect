@@ -1,33 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="parent(title, content , script)" xmlns:th="http://www.thymeleaf.org">
+<html
+        class="light"
+        lang="en" th:fragment="parent(title, content , script)" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title data-th-replace="${title}"></title>
     <link rel="stylesheet" th:href="@{/css/output.css}" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+
+    <!-- font awesome -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+
 </head>
-<body>
+<body class="dark:bg-gray-900 dark:text-white" >
 
 <!--comman header-->
-<ul class="p-4">
-    <li>
-        <a data-th-href="@{'/home'}">Home</a>
-    </li>
-    <li>
-        <a data-th-href="@{'/services'}">Services</a>
-    </li>
-    <li>
-        <a data-th-href="@{'/about'}">About</a>
-    </li>
-</ul>
+<div data-th-replace="navbar :: navbar">
 
+</div>
 <div class="p-4">
     <!-- Main content -->
     <section data-th-replace="${content}"></section>
 </div>
 <!-- Flowbite content -->
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+<script data-th-src="@{/js/script.js}"></script>
 
 <!--comman footer -->
 <footer class="p-4">
