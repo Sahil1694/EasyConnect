@@ -2,12 +2,14 @@ package com.Smart_Contact_Manager.Smart_Contact_Manager.services.impl;
 
 
 import com.Smart_Contact_Manager.Smart_Contact_Manager.entities.User;
+import com.Smart_Contact_Manager.Smart_Contact_Manager.helpers.AppConstants;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.helpers.ResourceNotFoundException;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.repositories.UserRepo;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,11 +26,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
     @Override
     public User SaveUser(User user) {
          //user id have to generate
         String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        user.setRoleList(List.of(AppConstants.ROLE_USER));
 
         //password encode
         return userRepo.save(user);
