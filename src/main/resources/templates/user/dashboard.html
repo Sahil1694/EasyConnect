@@ -1,14 +1,25 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        th:replace="~{base :: parent(~{::title} , ~{::#content}, ~{::script})}"
+>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
-</head>
+    <title data-th-text="${loggedInUser.name}+' | EasyConnect'">Profile Page</title></head>
 <body>
-    <h1>This is user Dashboard Page</h1>
 
-   <a data-th-href="@{/do-logout}">Logout</a>
+<div id="content">
+    <div th:if="${loggedInUser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}">
 
+        </div>
+    </div>
+    <div  class="sm:pl-64 pt-20" style="height : 1000px">
+        <h1>Welcome to the Dashboard Page</h1>
+    </div>
+</div>
+<script>
+    console.log("Home Page")
+</script>
 </body>
 </html>

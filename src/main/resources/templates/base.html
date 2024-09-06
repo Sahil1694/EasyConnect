@@ -22,10 +22,28 @@
 </head>
 <body class="dark:bg-gray-900 bg-gray-100 dark:text-white" >
 
-<!--comman header-->
-<div data-th-replace="navbar :: navbar">
-
+<!--  user is logged in : navbar -->
+<div th:if="${loggedInUser}">
+    <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
 </div>
+
+<!-- user is not logged : navbar -->
+<div th:unless="${loggedInUser}">
+    <div data-th-replace="~{navbar :: navbar}"></div>
+</div>
+
+<!--user is logged in -->
+<!--<div th:if="${loggedInUser}">-->
+<!--    <div data-th-replace="~{user/sidebar :: sidebar}">-->
+
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
 <div class="p-4">
     <!-- Main content -->
     <section data-th-replace="${content}"></section>
