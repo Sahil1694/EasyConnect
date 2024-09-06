@@ -1,5 +1,6 @@
 package com.Smart_Contact_Manager.Smart_Contact_Manager.controllers;
 
+import com.Smart_Contact_Manager.Smart_Contact_Manager.entities.User;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.helpers.Helper;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.services.UserService;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -22,8 +24,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // user dashbaord page
+    @ModelAttribute
+    public  void addLoggedInUserInformation(Model model,Authentication authentication){
+        String username = Helper.getEmailOfLoggedInUser(authentication);
 
+        logger.info("Username: " + username);
+
+        System.out.println("Username: " + username);
+
+        User user = userService.getUserByEmail(username);
+
+        model.addAttribute("loggedInUser", user);
+    }
+
+
+    // user dashbaord page
     @RequestMapping(value = "/dashboard")
     public String userDashboard() {
         System.out.println("User dashboard");
@@ -31,10 +46,17 @@ public class UserController {
     }
 
     // user profile page
-
     @RequestMapping(value = "/profile")
-    public String userProfile(Authentication authentication) {
+    public String userProfile(Model model, Authentication authentication) {
        String username = Helper.getEmailOfLoggedInUser(authentication);
+
+       logger.info("Username: " + username);
+
+       System.out.println("Username: " + username);
+
+       User user = userService.getUserByEmail(username);
+
+       model.addAttribute("loggedInUser", user);
 
 
         return "user/profile";
