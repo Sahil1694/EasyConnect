@@ -62,9 +62,9 @@ public class UserController {
         return "user/profile";
     }
 
-    // user add contacts page
+    // user add contacts.js page
 
-    // user view contacts
+    // user view contacts.js
 
     // user edit contact
 

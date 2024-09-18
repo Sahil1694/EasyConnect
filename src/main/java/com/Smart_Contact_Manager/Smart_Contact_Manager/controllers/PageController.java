@@ -83,6 +83,7 @@ public class PageController {
         user.setEmail(userForm.getEmail());
         user.setPassword(userForm.getPassword());
         user.setPhoneNumber(userForm.getPhoneNumber());
+        user.setEnabled(false);
         user.setAbout(userForm.getAbout());
         user.setProfilePic("https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg");
         User saveUser = userService.SaveUser(user);

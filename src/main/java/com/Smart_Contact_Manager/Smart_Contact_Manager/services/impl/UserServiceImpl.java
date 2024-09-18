@@ -3,8 +3,10 @@ package com.Smart_Contact_Manager.Smart_Contact_Manager.services.impl;
 
 import com.Smart_Contact_Manager.Smart_Contact_Manager.entities.User;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.helpers.AppConstants;
+import com.Smart_Contact_Manager.Smart_Contact_Manager.helpers.Helper;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.helpers.ResourceNotFoundException;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.repositories.UserRepo;
+import com.Smart_Contact_Manager.Smart_Contact_Manager.services.EmailService;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +31,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private EmailService emailService;
+
 
     @Override
     public User SaveUser(User user) {
@@ -41,7 +46,17 @@ public class UserServiceImpl implements UserService {
         user.setRoleList(List.of(AppConstants.ROLE_USER));
 
         //password encode
-        return userRepo.save(user);
+
+
+        String emailToken = UUID.randomUUID().toString();
+        user.setEmailToken(emailToken);
+        User savedUser =  userRepo.save(user);
+        String emailLink = Helper.getLinkForEmailVerification(emailToken);
+
+        emailService.sendEmail(savedUser.getEmail() , "Email Verification" , emailLink);
+
+
+        return savedUser;
     }
 
     @Override

@@ -3,6 +3,9 @@ package com.Smart_Contact_Manager.Smart_Contact_Manager.config;
 
 import com.Smart_Contact_Manager.Smart_Contact_Manager.services.impl.SecurityCustomUserDetailService;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -52,6 +55,9 @@ public class SecurityConfig {
     @Autowired
     private OAuthenticationSuccessHandler handler;
 
+    @Autowired
+    private AuthFailureHandler authFailureHandler;
+
     //Configure Authentication Provider Spring Security
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -85,7 +91,10 @@ public class SecurityConfig {
             //formLogin.failureForwardUrl("/login?error=true");
             formLogin.usernameParameter("email");
             formLogin.passwordParameter("password");
+
+            formLogin.failureHandler(authFailureHandler);
         });
+
 
             httpSecurity.csrf(AbstractHttpConfigurer::disable);
             httpSecurity.logout(logoutForm->{
