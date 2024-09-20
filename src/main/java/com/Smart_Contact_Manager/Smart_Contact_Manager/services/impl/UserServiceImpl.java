@@ -34,6 +34,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private Helper helper;
+
 
     @Override
     public User SaveUser(User user) {
@@ -51,7 +54,7 @@ public class UserServiceImpl implements UserService {
         String emailToken = UUID.randomUUID().toString();
         user.setEmailToken(emailToken);
         User savedUser =  userRepo.save(user);
-        String emailLink = Helper.getLinkForEmailVerification(emailToken);
+        String emailLink = helper.getLinkForEmailVerification(emailToken);
 
         emailService.sendEmail(savedUser.getEmail() , "Email Verification" , emailLink);
 
