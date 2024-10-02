@@ -1,18 +1,39 @@
 <!DOCTYPE html>
-<html
-        lang="en"
-        xmlns:th="http://www.thymeleaf.org"
-        th:replace="~{base :: parent(~{::title} , ~{::#content}, ~{::script})}"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{::title} , ~{::#content}, ~{::script})}">
 <head>
-    <title>Contact Us </title>
+    <title>Contact Us</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-<div id="content">
-    <h1>Welcome to the Contact Page</h1>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+<div id="content" class="container mx-auto py-16 px-4">
+    <!-- Page Header -->
+    <h1 class="text-4xl font-bold text-center mb-8 text-gray-900 dark:text-gray-200">Contact Us</h1>
+    <p class="text-lg text-center mb-12 text-gray-600 dark:text-gray-400">We’d love to hear from you! Feel free to reach out to us using the form below.</p>
+
+    <!-- Contact Form -->
+    <div class="max-w-lg mx-auto bg-white dark:bg-gray-800 p-8 rounded shadow-md dark:shadow-lg transition-colors duration-500">
+        <form>
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-300">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-300">
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Your Message</label>
+                <textarea id="message" name="message" placeholder="Enter your message" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-300"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded font-semibold hover:bg-blue-700 transition-colors duration-300">Send Message</button>
+        </form>
+    </div>
 </div>
+
 <script>
-    console.log("Home Page")
+    console.log("Contact Page");
 </script>
 </body>
 </html>
