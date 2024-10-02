@@ -1,18 +1,52 @@
 <!DOCTYPE html>
-<html
-        lang="en"
-        xmlns:th="http://www.thymeleaf.org"
-        th:replace="~{base :: parent( ~{::title} ,~{::#content} , ~{::script})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent( ~{::title}, ~{::#content}, ~{::script})}">
 <head>
-    <title>About Page </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom hover effect for image */
+        .profile-pic:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+        /* Background gradient */
+        body {
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        }
+        /* Dark mode gradient */
+        body.dark {
+            background: linear-gradient(135deg, #1f2937, #111827);
+        }
+    </style>
 </head>
-<body>
-<div id="content">
-    <h1>Welcome to the About Page</h1>
-    <p>lkeif ddf jkndj jnjdn jknjkd </p>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+
+<!-- Main Content Container -->
+<div id="content" class="flex flex-col items-center justify-center p-8 min-h-screen">
+
+    <!-- Photo Section with Hover Effect -->
+    <div class="mb-8">
+        <img data-th-src="@{'/images/Self.png'}" alt="Founder Image"
+             class="profile-pic rounded-full w-48 h-48 md:w-60 md:h-60 border-4 border-gray-300 dark:border-gray-700 shadow-2xl">
+    </div>
+
+    <!-- Info Section in a Professional Box -->
+    <div class="bg-white dark:bg-gray-800 shadow-xl dark:shadow-lg rounded-lg p-8 md:p-12 max-w-lg text-center transition-colors duration-500">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">Sahil Khilari</h2>
+        <p class="text-lg text-gray-500 dark:text-gray-400 mb-6">Founder & Software Engineer</p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Hi, I'm Sahil Khilari, a third-year engineering student at VIIT, Pune.
+            I interned as a Software Engineering Intern at PayPal in Chennai, where I gained experience
+            in developing robust websites and improving user experiences through technology.
+            My passion lies in creating efficient and innovative solutions that enhance digital experiences.
+        </p>
+    </div>
 </div>
-   <script>
-        console.log("About Page")
-   </script>
+
+<script>
+    console.log("About Page");
+</script>
 </body>
 </html>

@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{::title}, ~{::#content} , ~{::script})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{::title}, ~{::#content}, ~{::script})}">
 <head>
-        <title>Services Page</title>
+    <title>Services Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-<section id="content">
-    <h1>Welcome to the Services Page</h1>
-    <h2>Services Offered</h2>
-    <p>We offer various services to cater to your needs.</p>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+<section id="content" class="container mx-auto py-16">
+    <!-- Page Header -->
+    <h1 class="text-4xl font-bold text-center mb-8 text-gray-900 dark:text-gray-200">Our Services</h1>
+    <p class="text-lg text-center mb-12 text-gray-600 dark:text-gray-400">We offer various services to cater to your needs.</p>
+
+    <!-- Features Section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-100 dark:bg-gray-800 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <i class="fas fa-address-book text-blue-600 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-200">Easy Contact Management</h3>
+            <p class="text-gray-600 dark:text-gray-400">Add, edit, and organize your contacts in a user-friendly interface.</p>
+        </div>
+        <div class="p-6 bg-gray-100 dark:bg-gray-800 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <i class="fas fa-lock text-blue-600 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-200">Secure Storage</h3>
+            <p class="text-gray-600 dark:text-gray-400">Your data is protected with top-level encryption and security measures.</p>
+        </div>
+        <div class="p-6 bg-gray-100 dark:bg-gray-800 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <i class="fas fa-globe text-blue-600 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-200">24/7 Access</h3>
+            <p class="text-gray-600 dark:text-gray-400">Access your contacts anytime, anywhere from any device.</p>
+        </div>
+    </div>
 </section>
 
 <script>
-    console.log("Services Page")
+    console.log("Services Page");
 </script>
 </body>
 </html>
