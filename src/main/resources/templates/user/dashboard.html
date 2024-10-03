@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html
-        lang="en"
-        xmlns:th="http://www.thymeleaf.org"
-        th:replace="~{base :: parent(~{::title} , ~{::#content}, ~{::script})}"
->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: parent(~{::title} , ~{::#content}, ~{::script})}">
 <head>
-    <title data-th-text="${loggedInUser.name}+' | EasyConnect'">Profile Page</title></head>
-<body>
-
-<div id="content">
+    <title data-th-text="${loggedInUser.name}+' | EasyConnect'">Profile Page</title>
+</head>
+<body class="h-screen bg-gray-100">
+<div id="content" class="flex items-center justify-center h-screen">
     <div th:if="${loggedInUser}">
         <div data-th-replace="~{user/sidebar :: sidebar}">
-
         </div>
     </div>
-    <div  class="sm:pl-64 pt-20" style="height : 1000px">
-        <h1>Welcome to the Dashboard Page</h1>
+
+    <!-- Centered Under Construction Message with Left Margin -->
+    <div class="text-center ml-14"> <!-- Adjust the ml-10 for more or less margin -->
+        <h1 class="text-6xl font-bold text-yellow-500 animate-bounce mb-4">🚧 Under Construction 🚧</h1>
+        <p class="text-2xl text-gray-700">We're working hard to improve this page. Stay tuned!</p>
     </div>
 </div>
+
 <script>
-    console.log("Home Page")
+    console.log("Home Page");
 </script>
 </body>
 </html>

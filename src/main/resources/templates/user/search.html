@@ -25,6 +25,9 @@
         <div class="contacts_container p-5">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <div data-th-replace="~{message :: messagebox}"></div>
+                <div
+                        class="flex md:flex-row flex-col items-center px-4 justify-between bg-white dark:bg-gray-900"
+                >
                 <form
                         data-th-object="${contactSearchForm}"
                         data-th-action="@{'/user/contacts/search'}"
@@ -84,6 +87,19 @@
                         </button>
                     </div>
                 </form>
+                <div>
+                    <button
+                            type="button"
+                            onclick="exportData()"
+                            class="px-3 py-2 bg-green-800 text-white rounded"
+                    >
+                        Export
+                    </button>
+                </div>
+                </div>
+
+
+
                 <table
                         data-th-if="${pageContact.totalElements>0}"
                         class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -219,6 +235,16 @@
 </div>
 
 <script data-th-src="@{'/js/contacts.js'}"></script>
+<script>
+    function exportData() {
+      TableToExcel.convert(document.getElementById("contact-table"), {
+        name: "contacts.xlsx",
+        sheet: {
+          name: "Sheet 1",
+        },
+      });
+    }
+</script>
 
 <script>
     console.log("this is profile page");

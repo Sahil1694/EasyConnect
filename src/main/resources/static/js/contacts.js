@@ -1,7 +1,7 @@
 
 
 //const baseURL = "http://easyconnect.eu-north-1.elasticbeanstalk.com";
-baseURL = "http://localhost:8080";
+baseURL = "http://localhost:8081";
 console.log("contacts user");
 
 const viewContactModal = document.getElementById("view_contact_modal");
@@ -80,10 +80,14 @@ async function deleteContact(id) {
     icon: "warning",
     showCancelButton: true,
     confirmButtonText: "Delete",
+    cancelButtonText: "Cancel",
+    customClass: {
+      confirmButton: 'bg-red-500 text-white hover:bg-red-600', // Style for the confirm button
+      cancelButton: 'bg-gray-300 text-gray-800 hover:bg-gray-400' // Style for the cancel button
+    }
   }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      const url = `${baseURL}/user/contacts/delete/`  + id;
+      const url = `${baseURL}/user/contacts/delete/` + id;
       window.location.replace(url);
     }
   });

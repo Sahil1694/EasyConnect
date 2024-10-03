@@ -39,11 +39,8 @@ public class ImageServiceImpl implements ImageService {
             e.printStackTrace();
             return null;
         }
-
         // and return raha hoga : url
-
     }
-
 
     @Override
     public String getUrlFromPublicId(String publicId) {
