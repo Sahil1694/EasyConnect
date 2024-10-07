@@ -1,7 +1,6 @@
 package com.Smart_Contact_Manager.Smart_Contact_Manager.controllers;
 
 
-import ch.qos.logback.classic.Logger;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.entities.User;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.helpers.Helper;
 import com.Smart_Contact_Manager.Smart_Contact_Manager.services.UserService;
