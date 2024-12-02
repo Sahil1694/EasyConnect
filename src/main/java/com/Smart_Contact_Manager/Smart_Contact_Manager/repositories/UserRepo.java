@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface UserRepo extends JpaRepository< User, String> {
     //extra methods db related
     //custom query
-    //custom finder mehtos
+    //custom finder Method
     Optional<User> findByEmail(String email);
     Optional<User>findByEmailAndPassword(String email, String password);
     Optional<User>findByEmailToken(String id);

@@ -52,7 +52,6 @@ public class ContactController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String saveContact(@Valid @ModelAttribute ContactForm contactForm, BindingResult result, Authentication authentication, HttpSession session) {
 
-
         // Get the username of the logged-in user
         String username = Helper.getEmailOfLoggedInUser(authentication);
 
